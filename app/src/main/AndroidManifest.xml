@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="perchello.hangman" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".UI.GameStartActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.GameActivity"
+            android:label="@string/title_activity_game"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.GameStartActivity" />
+        </activity>
+        <activity
+            android:name=".UI.ResultActivity"
+            android:label="@string/title_activity_result"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.GameStartActivity" />
+        </activity>
+        <activity
+            android:name=".UI.chooseCategoryActivity"
+            android:label="@string/title_activity_choose_category"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.GameStartActivity" />
+        </activity>
+        <activity
+            android:name=".UI.ChooseGameModeActivity"
+            android:label="@string/title_activity_choose_game_mode"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.GameStartActivity" />
+        </activity>
+    </application>
+
+</manifest>
