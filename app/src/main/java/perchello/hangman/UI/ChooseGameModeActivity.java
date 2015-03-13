@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import perchello.hangman.Model.UserInfo;
 import perchello.hangman.R;
+import perchello.hangman.UI.adventure.ChooseAdventureActivity;
+import perchello.hangman.UI.singlegame.chooseCategoryActivity;
 
 
 public class ChooseGameModeActivity extends Activity {
@@ -28,9 +30,9 @@ public class ChooseGameModeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_game_mode);
-        mChooseModeButton1 = (Button) findViewById(R.id.chooseModeButton1);
-        mChooseModeButton2 = (Button) findViewById(R.id.chooseModeButton2);
-        mChooseModeTextView = (TextView) findViewById(R.id.chooseGameModeTextView);
+        mChooseModeButton1 = (Button) findViewById(R.id.chooseAdvButton1);
+        mChooseModeButton2 = (Button) findViewById(R.id.chooseAdvButton2);
+        mChooseModeTextView = (TextView) findViewById(R.id.chooseAdvTextView);
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
@@ -43,21 +45,22 @@ public class ChooseGameModeActivity extends Activity {
         mUserInfo.setName(intentget.getStringExtra("username"));
         mUsername = mUserInfo.getName();
         mScore = mUserInfo.getScore(mUsername);
-        //mUserInfo.updateScoreAdventure(mUsername);
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score: " + mScore+ "  ");
 
 
-        final Intent intent = new Intent(this, chooseCategoryActivity.class);
         mChooseModeButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(mContext, ChooseAdventureActivity.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
             }
         });
         mChooseModeButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(mContext, chooseCategoryActivity.class);
                 intent.putExtra("username", mUsername);
                 startActivity(intent);
 

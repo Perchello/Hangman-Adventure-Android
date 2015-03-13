@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textSize="30sp"
-        android:id="@+id/chooseGameModeTextView"
+        android:id="@+id/chooseAdvTextView"
         android:gravity="center_horizontal"
         android:textColor="@android:color/black"/>
 
@@ -25,24 +25,24 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Adventure Mode"
-        android:id="@+id/chooseModeButton1"
-        android:layout_below="@+id/chooseGameModeTextView"
-        android:layout_alignRight="@+id/chooseGameModeTextView"
-        android:layout_alignEnd="@+id/chooseGameModeTextView"
-        android:layout_alignLeft="@+id/chooseGameModeTextView"
-        android:layout_alignStart="@+id/chooseGameModeTextView"
+        android:id="@+id/chooseAdvButton1"
+        android:layout_below="@+id/chooseAdvTextView"
+        android:layout_alignRight="@+id/chooseAdvTextView"
+        android:layout_alignEnd="@+id/chooseAdvTextView"
+        android:layout_alignLeft="@+id/chooseAdvTextView"
+        android:layout_alignStart="@+id/chooseAdvTextView"
         android:layout_marginTop="10dp"/>
 
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Single games"
-        android:id="@+id/chooseModeButton2"
-        android:layout_below="@+id/chooseModeButton1"
-        android:layout_alignRight="@+id/chooseModeButton1"
-        android:layout_alignEnd="@+id/chooseModeButton1"
-        android:layout_alignLeft="@+id/chooseModeButton1"
-        android:layout_alignStart="@+id/chooseModeButton1"/>
+        android:id="@+id/chooseAdvButton2"
+        android:layout_below="@+id/chooseAdvButton1"
+        android:layout_alignRight="@+id/chooseAdvButton1"
+        android:layout_alignEnd="@+id/chooseAdvButton1"
+        android:layout_alignLeft="@+id/chooseAdvButton1"
+        android:layout_alignStart="@+id/chooseAdvButton1"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -75,8 +75,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
         android:src="@drawable/adventurer"
-        android:layout_toLeftOf="@+id/chooseGameModeTextView"
-        android:layout_toStartOf="@+id/chooseGameModeTextView"
+        android:layout_toLeftOf="@+id/chooseAdvTextView"
+        android:layout_toStartOf="@+id/chooseAdvTextView"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/usernameTextView"
         android:layout_marginBottom="70dp"

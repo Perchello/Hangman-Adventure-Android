@@ -1,18 +1,17 @@
-package perchello.hangman.UI;
+package perchello.hangman.UI.singlegame;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import perchello.hangman.Model.UserInfo;
 import perchello.hangman.R;
+import perchello.hangman.UI.ChooseGameModeActivity;
 
 public class ResultActivity extends Activity {
     private Button mTryAgain;

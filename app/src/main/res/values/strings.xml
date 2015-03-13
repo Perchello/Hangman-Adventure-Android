@@ -8,5 +8,6 @@
     <string name="title_activity_result">Result</string>
     <string name="title_activity_choose_category">chooseCategoryActivity</string>
     <string name="title_activity_choose_game_mode">ChooseGameModeActivity</string>
+    <string name="title_activity_choose_adventure">ChooseAdventureActivity</string>
 
 </resources>

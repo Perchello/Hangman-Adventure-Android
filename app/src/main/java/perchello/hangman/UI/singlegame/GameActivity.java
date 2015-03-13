@@ -1,4 +1,4 @@
-package perchello.hangman.UI;
+package perchello.hangman.UI.singlegame;
 
 import android.app.Activity;
 import android.content.Context;
@@ -23,6 +23,7 @@ import perchello.hangman.Model.DatabaseActions;
 import perchello.hangman.Model.Game;
 import perchello.hangman.Model.UserInfo;
 import perchello.hangman.R;
+import perchello.hangman.UI.singlegame.ResultActivity;
 
 public class GameActivity extends Activity implements View.OnClickListener {
     private TextView mTriesTextView;

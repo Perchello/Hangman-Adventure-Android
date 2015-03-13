@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.GameActivity"
+            android:name=".UI.singlegame.GameActivity"
             android:label="@string/title_activity_game"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
@@ -27,7 +27,7 @@
                 android:value="perchello.hangman.UI.GameStartActivity" />
         </activity>
         <activity
-            android:name=".UI.ResultActivity"
+            android:name=".UI.singlegame.ResultActivity"
             android:label="@string/title_activity_result"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
@@ -36,7 +36,7 @@
                 android:value="perchello.hangman.UI.GameStartActivity" />
         </activity>
         <activity
-            android:name=".UI.chooseCategoryActivity"
+            android:name=".UI.singlegame.chooseCategoryActivity"
             android:label="@string/title_activity_choose_category"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
@@ -48,10 +48,19 @@
             android:name=".UI.ChooseGameModeActivity"
             android:label="@string/title_activity_choose_game_mode"
             android:parentActivityName=".UI.GameStartActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="perchello.hangman.UI.GameStartActivity" />
+        </activity>
+        <activity
+            android:name=".UI.adventure.ChooseAdventureActivity"
+            android:label="@string/title_activity_choose_adventure"
+            android:parentActivityName=".UI.ChooseGameModeActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.ChooseGameModeActivity" />
         </activity>
     </application>
 

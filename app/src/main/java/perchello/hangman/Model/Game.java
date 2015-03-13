@@ -3,8 +3,6 @@ package perchello.hangman.Model;
 import android.content.Context;
 import android.widget.Toast;
 
-import perchello.hangman.UI.GameActivity;
-
 public class Game {
     public final static  int MAX_MISSES = 7;
     String mGameName;

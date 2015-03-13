@@ -1,6 +1,7 @@
-package perchello.hangman.UI;
+package perchello.hangman.UI.singlegame;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -21,20 +22,18 @@ public class chooseCategoryActivity extends Activity {
     private UserInfo mUserInfo;
     private String mUsername;
     private TextView mChooseCatTextView;
+    private Context mContext = this;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_category);
-        mButton1 = (Button) findViewById(R.id.chooseModeButton1);
-        mButton2 = (Button) findViewById(R.id.chooseModeButton2);
+        mButton1 = (Button) findViewById(R.id.chooseAdvButton1);
+        mButton2 = (Button) findViewById(R.id.chooseAdvButton2);
         mButton3 = (Button) findViewById(R.id.catButton3);
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
-        mChooseCatTextView = (TextView) findViewById(R.id.chooseGameModeTextView);
-        mUserInfo = new UserInfo();
-        mUserInfo.setContext(this);
-        mUserInfo.setName(getIntent().getStringExtra("username"));
-
+        mChooseCatTextView = (TextView) findViewById(R.id.chooseAdvTextView);
+        mUserInfo = new UserInfo(getIntent().getStringExtra("username"), mContext);
         mScore= mUserInfo.getScore(mUserInfo.getName());
         mUsername = mUserInfo.getName();
         mUsernameView.setText("Welcome " + mUsername + "!  ");

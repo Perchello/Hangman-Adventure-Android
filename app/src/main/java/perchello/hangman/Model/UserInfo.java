@@ -1,7 +1,6 @@
 package perchello.hangman.Model;
 
 import android.content.Context;
-import android.util.Log;
 
 /**
  * Created by Perchello on 08/03/2015.
@@ -11,19 +10,17 @@ public class UserInfo {
     private Context mContext;
     private String mName;
     private int mScore;
+    private int [] mAdvProgress;
+    private String [] mAdvDone;
+    private static final int MAXADVNUMBER=2;
 
-    public UserInfo() {
-        mName = "Guest";
-        mScore = 0;
-    }
     public UserInfo(String name, Context context) {
         mName = name;
-        Log.d("Name set to", name);
         setContext(context);
-        Log.d("Context set", name);
         setName(mName);
         mScore = getScore(mName);
-        Log.d("Score set to", mScore + "");
+        mAdvProgress = mDatabaseActions.getAdvProgress(mName, MAXADVNUMBER);
+        mAdvDone = mDatabaseActions.getAdvDone(mName, MAXADVNUMBER);
     }
 
     public void setContext(Context context) {
@@ -55,13 +52,27 @@ public class UserInfo {
     public int getScore(String name) {
         return mDatabaseActions.getScore(name);
     }
-    public void updateScoreAdventure(String name){
-        mDatabaseActions.updateScoreAdventure(name, 1, "egypt", 1, 13);
-    }
+
+
     public void updateDataVersion(){
-        mDatabaseActions.onUpgrade(mDatabaseActions.getWritableDatabase(), 1, 2);
+        mDatabaseActions.onUpgrade(mDatabaseActions.getWritableDatabase(), 2, 3);
     }
 
+    public int getAdvProgress(int advNumber) {
+
+        return mAdvProgress[advNumber-1];
+    }
+
+    public String getAdvDone(int advNumber) {
+        return mAdvDone[advNumber];
+    }
+
+    public void setAdvScore (String advDone, int gameNameLength,int advNumber) {
+        mAdvDone [advNumber] += " " + advDone;
+        mAdvProgress[advNumber]++;
+        mScore+= gameNameLength;
+        mDatabaseActions.updateScoreAdventure(mName, advNumber, mAdvDone[advNumber], mAdvProgress[advNumber], mScore);
+    }
 
     public String getName() {
         return mName;

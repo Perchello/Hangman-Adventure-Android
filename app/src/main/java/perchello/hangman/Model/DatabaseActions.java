@@ -15,11 +15,13 @@ public class DatabaseActions extends SQLiteOpenHelper {
     private static final String SCORE ="score";
     private static final String ADVPROGRESS1 ="advprogress1";
     private static final String ADVWORDSDONE1 ="advdwordsdone1";
+    private static final String ADVPROGRESS2 ="advprogress2";
+    private static final String ADVWORDSDONE2 ="advdwordsdone2";
     private static int dbVersion = 1;
 
 
     public DatabaseActions(Context context) {
-    super(context, DATABASE_NAME, null, 2);
+    super(context, DATABASE_NAME, null, 3);
     }
 
     @Override
@@ -29,27 +31,30 @@ public class DatabaseActions extends SQLiteOpenHelper {
                 + NAME + ", "
                 + SCORE + ", "
                 + ADVPROGRESS1 + ", "
-                + ADVWORDSDONE1 + ");");
+                + ADVWORDSDONE1 + ", "
+                + ADVPROGRESS2 + ", "
+                + ADVWORDSDONE2 + ");");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String upgradeQuery = "ALTER TABLE " + DATABASE_NAME +" ADD COLUMN " + ADVPROGRESS1 +" INTEGER DEFAULT 0, ADD COLUMN " + ADVWORDSDONE1 + " TEXT";
-        Log.d("yuh", upgradeQuery);
-        if (newVersion>dbVersion) {
-            dbVersion=newVersion;
-            Log.d("yuh", upgradeQuery);
-            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
-            onCreate(db);
+
+            if (newVersion > dbVersion) {
+                dbVersion = newVersion;
+                db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+                onCreate(db);
+            }
         }
-    }
+
     public void setName(String name) {
         ContentValues values=new ContentValues(4);
         values.put(NAME, name);
         values.put (SCORE, 0);
         values.put (ADVPROGRESS1, 0);
         values.put (ADVWORDSDONE1, "");
+        values.put (ADVPROGRESS2, 0);
+        values.put (ADVWORDSDONE2, "");
         getWritableDatabase().insert(DATABASE_NAME, null, values);
         close();
     }
@@ -66,7 +71,6 @@ public class DatabaseActions extends SQLiteOpenHelper {
                 }
             }
 
-        Log.d ("isNEwName is: ", Boolean.toString(isNewName));
         return isNewName;
     }
     public int getScore (String name){
@@ -82,6 +86,39 @@ public class DatabaseActions extends SQLiteOpenHelper {
 
 
         return cursor.getInt(1);
+    }
+    public int [] getAdvProgress (String name, int maxAdvNumber){
+        SQLiteDatabase db = this.getReadableDatabase();
+        int [] result = new int[maxAdvNumber];
+        Cursor cursor = db.query(DATABASE_NAME,
+                new String[] { NAME, ADVPROGRESS1, ADVPROGRESS2},
+                NAME + " = ?",
+                new String [] {name}
+                , null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        for (int i = 0; i<maxAdvNumber; i++){
+            result [i] = cursor.getInt(i+1);
+        }
+        return result;
+    }
+    public String [] getAdvDone (String name, int maxAdvNumber){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String [] result = new String [maxAdvNumber];
+        Cursor cursor = db.query(DATABASE_NAME,
+                new String[] { NAME, ADVWORDSDONE1, ADVWORDSDONE2 },
+                NAME + " = ?",
+                new String [] {name}
+                , null, null, null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        for (int i = 0; i<maxAdvNumber; i++){
+            result [i] = cursor.getString(i+1);
+        }
+
+        return result;
     }
     public void updateScoreSingleGame (String name, int score){
         ContentValues values=new ContentValues(2);
