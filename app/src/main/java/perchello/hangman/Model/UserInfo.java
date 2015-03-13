@@ -55,8 +55,11 @@ public class UserInfo {
     public int getScore(String name) {
         return mDatabaseActions.getScore(name);
     }
-    public void updateScoreAdventure(){
-        mDatabaseActions.updateScoreAdventure("George", 1, "egypt", 1, 13);
+    public void updateScoreAdventure(String name){
+        mDatabaseActions.updateScoreAdventure(name, 1, "egypt", 1, 13);
+    }
+    public void updateDataVersion(){
+        mDatabaseActions.onUpgrade(mDatabaseActions.getWritableDatabase(), 1, 2);
     }
 
 

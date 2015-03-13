@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -41,10 +39,11 @@ public class ChooseGameModeActivity extends Activity {
         mChooseModeTextView.setTypeface(typeface);
         Intent intentget = getIntent();
         mUserInfo = new UserInfo(intentget.getStringExtra("username"), mContext);
+        mUserInfo.updateDataVersion();
         mUserInfo.setName(intentget.getStringExtra("username"));
-
         mUsername = mUserInfo.getName();
         mScore = mUserInfo.getScore(mUsername);
+        //mUserInfo.updateScoreAdventure(mUsername);
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score: " + mScore+ "  ");
 

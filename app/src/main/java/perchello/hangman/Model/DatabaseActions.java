@@ -8,19 +8,18 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-/**
- * Created by Perchello on 07/03/2015.
- */
+
 public class DatabaseActions extends SQLiteOpenHelper {
     private static final String DATABASE_NAME="HighscoreDatabase";
     private static final String NAME="name";
     private static final String SCORE ="score";
     private static final String ADVPROGRESS1 ="advprogress1";
     private static final String ADVWORDSDONE1 ="advdwordsdone1";
+    private static int dbVersion = 1;
 
 
     public DatabaseActions(Context context) {
-    super(context, DATABASE_NAME, null, 1);
+    super(context, DATABASE_NAME, null, 2);
     }
 
     @Override
@@ -36,8 +35,14 @@ public class DatabaseActions extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS " +  DATABASE_NAME);
-        onCreate(db);
+        String upgradeQuery = "ALTER TABLE " + DATABASE_NAME +" ADD COLUMN " + ADVPROGRESS1 +" INTEGER DEFAULT 0, ADD COLUMN " + ADVWORDSDONE1 + " TEXT";
+        Log.d("yuh", upgradeQuery);
+        if (newVersion>dbVersion) {
+            dbVersion=newVersion;
+            Log.d("yuh", upgradeQuery);
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+            onCreate(db);
+        }
     }
     public void setName(String name) {
         ContentValues values=new ContentValues(4);
@@ -65,7 +70,6 @@ public class DatabaseActions extends SQLiteOpenHelper {
         return isNewName;
     }
     public int getScore (String name){
-        int score = 0;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DATABASE_NAME,
                 new String[] { NAME, SCORE},
@@ -75,9 +79,9 @@ public class DatabaseActions extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        score = cursor.getInt(1);
 
-        return score;
+
+        return cursor.getInt(1);
     }
     public void updateScoreSingleGame (String name, int score){
         ContentValues values=new ContentValues(2);
@@ -97,6 +101,6 @@ public class DatabaseActions extends SQLiteOpenHelper {
         getWritableDatabase().update(DATABASE_NAME,
                 values,
                 NAME + "=?",
-                new String[] {name});
+                new String[]{name});
     }
 }
