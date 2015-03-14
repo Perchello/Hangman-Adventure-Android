@@ -61,7 +61,6 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private String [] mWords;
     int mWordNumber;
     private Context mContext = this;
-    private DatabaseActions mDatabaseActions;
     private String mUsername;
     private int mScore;
     private ImageView mHeroImageView;

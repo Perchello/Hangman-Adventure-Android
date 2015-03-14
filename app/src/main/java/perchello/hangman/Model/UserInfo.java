@@ -64,14 +64,14 @@ public class UserInfo {
     }
 
     public String getAdvDone(int advNumber) {
-        return mAdvDone[advNumber];
+        return mAdvDone[advNumber-1];
     }
 
-    public void setAdvScore (String advDone, int gameNameLength,int advNumber) {
-        mAdvDone [advNumber] += " " + advDone;
-        mAdvProgress[advNumber]++;
-        mScore+= gameNameLength;
-        mDatabaseActions.updateScoreAdventure(mName, advNumber, mAdvDone[advNumber], mAdvProgress[advNumber], mScore);
+    public void setAdvScore (String advDone, int advNumber, int hits) {
+        mAdvDone [advNumber-1] += " " + advDone;
+        mAdvProgress[advNumber-1]++;
+        mScore+= hits;
+        mDatabaseActions.updateScoreAdventure(mName, advNumber, mAdvDone[advNumber-1], mAdvProgress[advNumber-1], mScore);
     }
 
     public String getName() {

@@ -17,7 +17,7 @@ public class DatabaseActions extends SQLiteOpenHelper {
     private static final String ADVWORDSDONE1 ="advdwordsdone1";
     private static final String ADVPROGRESS2 ="advprogress2";
     private static final String ADVWORDSDONE2 ="advdwordsdone2";
-    private static int dbVersion = 1;
+    private static int dbVersion = 3;
 
 
     public DatabaseActions(Context context) {

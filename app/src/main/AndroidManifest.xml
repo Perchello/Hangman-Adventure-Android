@@ -57,7 +57,25 @@
             android:name=".UI.adventure.ChooseAdventureActivity"
             android:label="@string/title_activity_choose_adventure"
             android:parentActivityName=".UI.ChooseGameModeActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.ChooseGameModeActivity" />
+        </activity>
+        <activity
+            android:name=".UI.adventure.AdventureGameActivity"
+            android:label="@string/title_activity_adventure_game"
+            android:parentActivityName=".UI.ChooseGameModeActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.ChooseGameModeActivity" />
+        </activity>
+        <activity
+            android:name=".UI.adventure.AdventureResultActivity"
+            android:label="@string/title_activity_adventure_result"
+            android:parentActivityName=".UI.ChooseGameModeActivity"
+            android:screenOrientation="landscape" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="perchello.hangman.UI.ChooseGameModeActivity" />

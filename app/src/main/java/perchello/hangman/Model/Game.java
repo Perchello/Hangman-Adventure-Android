@@ -64,7 +64,7 @@ public class Game {
             }
         }
         return result;
-    }
+        }
     public String checkProgress (){
         String progress = "";
         for (char letter : mGameName.toCharArray()){
