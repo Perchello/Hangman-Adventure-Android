@@ -54,10 +54,6 @@ public class UserInfo {
     }
 
 
-    public void updateDataVersion(){
-        mDatabaseActions.onUpgrade(mDatabaseActions.getWritableDatabase(), 2, 3);
-    }
-
     public int getAdvProgress(int advNumber) {
 
         return mAdvProgress[advNumber-1];

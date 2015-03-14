@@ -89,10 +89,12 @@ public class GameActivity extends Activity implements View.OnClickListener {
             fileOpen = assetManager.open(intent.getStringExtra("choose"));
             BufferedReader buffReader = new BufferedReader(new InputStreamReader(fileOpen));
             StringBuilder wordArrayBuilder = new StringBuilder();
-            while (buffReader.readLine()!=null){
-                if (buffReader.readLine()!=""){
-                wordArrayBuilder.append(buffReader.readLine() + "_");
+            String test = buffReader.readLine();
+            while (test != null) {
+                if (test != "") {
+                    wordArrayBuilder.append(test + "_");
                 }
+                test = buffReader.readLine();
 
             }
             mWords = wordArrayBuilder.toString().split("_");
@@ -186,8 +188,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         char input = textView.getText().toString().toLowerCase().charAt(0);
 
         if (mGame.checkGuess(input)){
-            mUserInfo.addScoreSingleGame(1);
-            updateScore();
+
         }
         changePicture();
         String result = mGame.getHits();
@@ -214,6 +215,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         }
         if (mGame.compareAnswerProg()) {
             String result = ("Good work " + mUsername + " you solved it! The answer was : \n \n " + mGame.getGameName());
+            mUserInfo.addScoreSingleGame(mGame.getHits().length());
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("result", result);
             intent.putExtra("username", mUsername);
@@ -235,7 +237,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     }
     private void changePicture(){
-        if (mGame.getMisses().length()>0 && mGame.getMisses().length()<=6) {
+        /*if (mGame.getMisses().length()>0 && mGame.getMisses().length()<=6) {
             int pictureId = mContext.getResources().getIdentifier("palach" + mGame.getMisses().length(), "drawable", mContext.getPackageName());
             mEvilGuyImageView.setImageDrawable(getResources().getDrawable(pictureId));
         }
@@ -250,7 +252,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         if (goodGuyPic>0 && goodGuyPic <5){
             int pictureId = mContext.getResources().getIdentifier("adventurer" + (5-goodGuyPic), "drawable", mContext.getPackageName());
             mHeroImageView.setImageDrawable(getResources().getDrawable(pictureId));
-        }
+        }*/
     }
 
 }

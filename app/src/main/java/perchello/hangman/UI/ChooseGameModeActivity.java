@@ -41,7 +41,6 @@ public class ChooseGameModeActivity extends Activity {
         mChooseModeTextView.setTypeface(typeface);
         Intent intentget = getIntent();
         mUserInfo = new UserInfo(intentget.getStringExtra("username"), mContext);
-        mUserInfo.updateDataVersion();
         mUserInfo.setName(intentget.getStringExtra("username"));
         mUsername = mUserInfo.getName();
         mScore = mUserInfo.getScore(mUsername);

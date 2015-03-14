@@ -17,7 +17,6 @@ public class DatabaseActions extends SQLiteOpenHelper {
     private static final String ADVWORDSDONE1 ="advdwordsdone1";
     private static final String ADVPROGRESS2 ="advprogress2";
     private static final String ADVWORDSDONE2 ="advdwordsdone2";
-    private static int dbVersion = 3;
 
 
     public DatabaseActions(Context context) {
@@ -39,12 +38,12 @@ public class DatabaseActions extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d ("Old version", String.valueOf(oldVersion));
+        Log.d ("New version", String.valueOf(newVersion));
+        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
 
-            if (newVersion > dbVersion) {
-                dbVersion = newVersion;
-                db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
-                onCreate(db);
-            }
+         onCreate(db);
+
         }
 
     public void setName(String name) {
