@@ -1,4 +1,4 @@
-package perchello.hangman.UI.singlegame;
+package perchello.hangman.UI.singlehangman;
 
 import android.app.Activity;
 import android.content.Context;

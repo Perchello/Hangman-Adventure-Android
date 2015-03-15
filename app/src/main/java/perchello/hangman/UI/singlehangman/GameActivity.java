@@ -1,4 +1,4 @@
-package perchello.hangman.UI.singlegame;
+package perchello.hangman.UI.singlehangman;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,16 +18,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
 
-import perchello.hangman.Model.DatabaseActions;
-import perchello.hangman.Model.Game;
+import perchello.hangman.Model.HangmanGameLogic;
 import perchello.hangman.Model.UserInfo;
 import perchello.hangman.R;
-import perchello.hangman.UI.singlegame.ResultActivity;
 
 public class GameActivity extends Activity implements View.OnClickListener {
     private TextView mTriesTextView;
     private TextView mProgressTextView;
-    private Game mGame;
+    private HangmanGameLogic mHangmanGameLogic;
     private TextView mUsernameView;
     private TextView mScoreView;
     private UserInfo mUserInfo;
@@ -77,9 +74,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
         Bundle bundle = new Bundle();
         mUserInfo = new UserInfo(intent.getStringExtra("username"), mContext);
         if ((bundle != null) && (bundle.getSerializable("starttime") != null)) {
-           mGame.setHits(bundle.getString("mHits"));
-            mGame.setMisses(bundle.getString("mMisses"));
-            mGame.setGameName(bundle.getString("mGameNAme"));
+           mHangmanGameLogic.setHits(bundle.getString("mHits"));
+            mHangmanGameLogic.setMisses(bundle.getString("mMisses"));
+            mHangmanGameLogic.setGameName(bundle.getString("mGameNAme"));
             }
 
 
@@ -116,7 +113,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         mScore = mUserInfo.getScore(mUsername);
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score: " + mScore+ "  ");
-        mGame = new Game(mWords[mWordNumber].toLowerCase());
+        mHangmanGameLogic = new HangmanGameLogic(mWords[mWordNumber].toLowerCase());
         mTriesTextView = (TextView) findViewById(R.id.triesTextView);
         mProgressTextView = (TextView) findViewById(R.id.progressTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
@@ -176,9 +173,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
         oTextView.setOnClickListener(this);
         pTextView = (TextView) findViewById(R.id.pTextView);
         pTextView.setOnClickListener(this);
-        mTriesTextView.setText("Tries left: \n\n" + mGame.getTries());
-        mProgressTextView.setText("Your progress: \n\n " + mGame.checkProgress());
-        mGame.setContext(getApplicationContext());
+        mTriesTextView.setText("Tries left: \n\n" + mHangmanGameLogic.getTries());
+        mProgressTextView.setText("Your progress: \n\n " + mHangmanGameLogic.checkProgress());
+        mHangmanGameLogic.setContext(getApplicationContext());
 
 
     }
@@ -187,24 +184,24 @@ public class GameActivity extends Activity implements View.OnClickListener {
         TextView textView = (TextView) v;
         char input = textView.getText().toString().toLowerCase().charAt(0);
 
-        if (mGame.checkGuess(input)){
+        if (mHangmanGameLogic.checkGuess(input)){
 
         }
         changePicture();
-        String result = mGame.getHits();
+        String result = mHangmanGameLogic.getHits();
         if (result.indexOf(input)>=0){
             textView.setTextColor(Color.parseColor("#fffffd09"));
         }
         else {
             textView.setTextColor(Color.parseColor("#ffff514e"));
         }
-        mTriesTextView.setText("Tries left: \n\n" + mGame.getTries() + " ");
-        mProgressTextView.setText("Your progress: \n\n " + mGame.checkProgress());
+        mTriesTextView.setText("Tries left: \n\n" + mHangmanGameLogic.getTries() + " ");
+        mProgressTextView.setText("Your progress: \n\n " + mHangmanGameLogic.checkProgress());
         result();
     }
     public void result (){
-        if (mGame.compareMisses()) {
-            String result = ("Game over. You lost, " + mUsername+ " The answer was :\n\n " + mGame.getGameName());
+        if (mHangmanGameLogic.compareMisses()) {
+            String result = ("Game over. You lost, " + mUsername+ " The answer was :\n\n " + mHangmanGameLogic.getGameName());
         Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("result", result);
             intent.putExtra("username", mUsername);
@@ -213,9 +210,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
 
         }
-        if (mGame.compareAnswerProg()) {
-            String result = ("Good work " + mUsername + " you solved it! The answer was : \n \n " + mGame.getGameName());
-            mUserInfo.addScoreSingleGame(mGame.getHits().length());
+        if (mHangmanGameLogic.compareAnswerProg()) {
+            String result = ("Good work " + mUsername + " you solved it! The answer was : \n \n " + mHangmanGameLogic.getGameName());
+            mUserInfo.addScoreSingleGame(mHangmanGameLogic.getHits().length());
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("result", result);
             intent.putExtra("username", mUsername);
@@ -227,9 +224,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onSaveInstanceState(Bundle state){
         super.onSaveInstanceState(state);
-        state.putString("mHits", mGame.getHits());
-        state.putString ("mMisses", mGame.getMisses());
-        state.putString ("mGameName", mGame.getGameName());
+        state.putString("mHits", mHangmanGameLogic.getHits());
+        state.putString ("mMisses", mHangmanGameLogic.getMisses());
+        state.putString ("mGameName", mHangmanGameLogic.getGameName());
     }
     private void updateScore (){
         mScore = mUserInfo.getScore(mUsername);

@@ -69,7 +69,6 @@ public class DatabaseActions extends SQLiteOpenHelper {
 
                 }
             }
-
         return isNewName;
     }
     public int getScore (String name){

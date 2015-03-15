@@ -6,68 +6,54 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="perchello.hangman.UI.singlegame.chooseCategoryActivity"
+    tools:context="perchello.hangman.UI.singlehangman.chooseCategoryActivity"
     android:background="@drawable/papertexture">
 
-    <TextView
-        android:text="Choose category: "
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:textSize="30sp"
-        android:id="@+id/chooseAdvTextView"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/black"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Animals"
-        android:id="@+id/chooseAdvButton1"
-        android:layout_below="@+id/chooseAdvTextView"
-        android:layout_alignRight="@+id/chooseAdvTextView"
-        android:layout_alignEnd="@+id/chooseAdvTextView"
-        android:layout_alignLeft="@+id/chooseAdvTextView"
-        android:layout_alignStart="@+id/chooseAdvTextView"
-        android:layout_marginTop="10dp"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Countries"
-        android:id="@+id/chooseAdvButton2"
-        android:layout_below="@+id/chooseAdvButton1"
-        android:layout_alignRight="@+id/chooseAdvButton1"
-        android:layout_alignEnd="@+id/chooseAdvButton1"
-        android:layout_alignLeft="@+id/chooseAdvButton1"
-        android:layout_alignStart="@+id/chooseAdvButton1"/>
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Random words"
-        android:id="@+id/catButton3"
-        android:layout_below="@+id/chooseAdvButton2"
-        android:layout_alignRight="@+id/chooseAdvButton2"
-        android:layout_alignEnd="@+id/chooseAdvButton2"
-        android:layout_alignLeft="@+id/chooseAdvButton2"
-        android:layout_alignStart="@+id/chooseAdvButton2"/>
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/usernameTextView"
-        android:layout_alignParentTop="true"
+        <TextView
+            android:text="Choose category: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:textSize="30sp"
+            android:id="@+id/chooseCatTextView"
+            android:gravity="center_horizontal"
+            android:textColor="@android:color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@+id/chooseCatTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:text="Welcome Guest!"
-        android:textSize="18sp"
-        android:singleLine="true"
-        android:textColor="@android:color/black"/>
+        android:id="@+id/linearLayout1"
+        >
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Animals"
+            android:id="@+id/chooseCatButton1"
+            />
 
-     <TextView
+        <Button
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Countries"
+            android:id="@+id/chooseCatButton2"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:text="Random words"
+            android:id="@+id/chooseCatButton3"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your score is"
@@ -78,17 +64,42 @@
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
-    <ImageView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
+        android:id="@+id/usernameTextView"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:src="@drawable/adventurer"
-        android:layout_toLeftOf="@+id/chooseAdvButton1"
-        android:layout_toStartOf="@+id/chooseAdvButton1"
-        android:layout_below="@+id/usernameTextView"
-        android:layout_marginBottom="70dp"
-        android:layout_marginTop="10dp"/>
+        android:text="Welcome Guest!"
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:textColor="@android:color/black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:id="@+id/linearLayout2"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:text="Egypt"
+        android:id="@+id/chooseAdvCatButton1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_weight="1"/>
 
+    <Button
+        android:layout_weight="1"
+        android:layout_width="0dp
+        "
+        android:layout_height="match_parent"
+        android:text="China"
+        android:id="@+id/chooseAdvCatButton2"
+        android:layout_above="@+id/chooseAdvCatButton1"
+        android:layout_centerHorizontal="true"/>
+    </LinearLayout>
 </RelativeLayout>

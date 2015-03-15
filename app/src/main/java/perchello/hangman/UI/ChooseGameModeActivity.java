@@ -12,7 +12,7 @@ import android.widget.TextView;
 import perchello.hangman.Model.UserInfo;
 import perchello.hangman.R;
 import perchello.hangman.UI.adventure.ChooseAdventureActivity;
-import perchello.hangman.UI.singlegame.chooseCategoryActivity;
+import perchello.hangman.UI.singlehangman.chooseCategoryActivity;
 
 
 public class ChooseGameModeActivity extends Activity {
@@ -30,9 +30,9 @@ public class ChooseGameModeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_game_mode);
-        mChooseModeButton1 = (Button) findViewById(R.id.chooseAdvButton1);
-        mChooseModeButton2 = (Button) findViewById(R.id.chooseAdvButton2);
-        mChooseModeTextView = (TextView) findViewById(R.id.chooseAdvTextView);
+        mChooseModeButton1 = (Button) findViewById(R.id.chooseCatButton1);
+        mChooseModeButton2 = (Button) findViewById(R.id.chooseCatButton2);
+        mChooseModeTextView = (TextView) findViewById(R.id.chooseCatTextView);
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");

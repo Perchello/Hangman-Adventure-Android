@@ -2,9 +2,6 @@ package perchello.hangman.Model;
 
 import android.content.Context;
 
-/**
- * Created by Perchello on 08/03/2015.
- */
 public class UserInfo {
     private DatabaseActions mDatabaseActions;
     private Context mContext;

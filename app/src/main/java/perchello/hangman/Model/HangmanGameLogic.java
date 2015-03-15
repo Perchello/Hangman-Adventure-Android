@@ -3,7 +3,7 @@ package perchello.hangman.Model;
 import android.content.Context;
 import android.widget.Toast;
 
-public class Game {
+public class HangmanGameLogic {
     public final static  int MAX_MISSES = 7;
     String mGameName;
     String mHits;
@@ -31,7 +31,7 @@ public class Game {
         mMisses = misses;
     }
 
-    public Game (String gameName){
+    public HangmanGameLogic(String gameName){
         mGameName=gameName;
         mHits="";
         mMisses="";

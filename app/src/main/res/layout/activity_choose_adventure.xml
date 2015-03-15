@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:textSize="30sp"
-        android:id="@+id/chooseAdvTextView"
+        android:id="@+id/chooseCatTextView"
         android:gravity="center_horizontal"
         android:textColor="@android:color/black"/>
 
@@ -26,12 +26,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="Egypt"
-        android:id="@+id/chooseAdvButton1"
-        android:layout_below="@+id/chooseAdvTextView"
-        android:layout_alignRight="@+id/chooseAdvTextView"
-        android:layout_alignEnd="@+id/chooseAdvTextView"
-        android:layout_alignLeft="@+id/chooseAdvTextView"
-        android:layout_alignStart="@+id/chooseAdvTextView"
+        android:id="@+id/chooseCatButton1"
+        android:layout_below="@+id/chooseCatTextView"
+        android:layout_alignRight="@+id/chooseCatTextView"
+        android:layout_alignEnd="@+id/chooseCatTextView"
+        android:layout_alignLeft="@+id/chooseCatTextView"
+        android:layout_alignStart="@+id/chooseCatTextView"
         android:layout_marginTop="10dp"
         />
 
@@ -39,12 +39,12 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:text="China"
-        android:id="@+id/chooseAdvButton2"
-        android:layout_below="@+id/chooseAdvButton1"
-        android:layout_alignRight="@+id/chooseAdvButton1"
-        android:layout_alignEnd="@+id/chooseAdvButton1"
-        android:layout_alignLeft="@+id/chooseAdvButton1"
-        android:layout_alignStart="@+id/chooseAdvButton1"/>
+        android:id="@+id/chooseCatButton2"
+        android:layout_below="@+id/chooseCatButton1"
+        android:layout_alignRight="@+id/chooseCatButton1"
+        android:layout_alignEnd="@+id/chooseCatButton1"
+        android:layout_alignLeft="@+id/chooseCatButton1"
+        android:layout_alignStart="@+id/chooseCatButton1"/>
 
     <TextView
         android:layout_width="fill_parent"
@@ -74,9 +74,9 @@
         android:layout_height="wrap_content"
         android:text="7 / 20"
         android:id="@+id/resultAdvTextView1"
-        android:layout_toRightOf="@+id/chooseAdvButton1"
-        android:layout_toEndOf="@+id/chooseAdvButton1"
-        android:layout_alignBottom="@+id/chooseAdvButton1"
+        android:layout_toRightOf="@+id/chooseCatButton1"
+        android:layout_toEndOf="@+id/chooseCatButton1"
+        android:layout_alignBottom="@+id/chooseCatButton1"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="3dp"/>
     <TextView
@@ -84,9 +84,9 @@
         android:layout_height="wrap_content"
         android:text="7 / 20"
         android:id="@+id/resultAdvTextView2"
-        android:layout_toRightOf="@+id/chooseAdvButton2"
-        android:layout_toEndOf="@+id/chooseAdvButton2"
-        android:layout_alignBottom="@+id/chooseAdvButton2"
+        android:layout_toRightOf="@+id/chooseCatButton2"
+        android:layout_toEndOf="@+id/chooseCatButton2"
+        android:layout_alignBottom="@+id/chooseCatButton2"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="3dp"/>
 

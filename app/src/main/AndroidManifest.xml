@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UI.singlegame.GameActivity"
+            android:name=".UI.singlehangman.GameActivity"
             android:label="@string/title_activity_game"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
@@ -27,7 +27,7 @@
                 android:value="perchello.hangman.UI.GameStartActivity" />
         </activity>
         <activity
-            android:name=".UI.singlegame.ResultActivity"
+            android:name=".UI.singlehangman.ResultActivity"
             android:label="@string/title_activity_result"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
@@ -36,7 +36,7 @@
                 android:value="perchello.hangman.UI.GameStartActivity" />
         </activity>
         <activity
-            android:name=".UI.singlegame.chooseCategoryActivity"
+            android:name=".UI.singlehangman.chooseCategoryActivity"
             android:label="@string/title_activity_choose_category"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
