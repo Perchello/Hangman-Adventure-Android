@@ -82,5 +82,15 @@
         android:layout_marginBottom="70dp"
         android:layout_marginTop="10dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Highscore"
+        android:id="@+id/highscoreButon"
+        android:layout_below="@+id/chooseCatButton2"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_alignRight="@+id/chooseCatButton2"
+        android:layout_alignEnd="@+id/chooseCatButton2"/>
+
 
 </RelativeLayout>

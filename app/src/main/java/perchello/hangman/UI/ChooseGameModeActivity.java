@@ -25,6 +25,7 @@ public class ChooseGameModeActivity extends Activity {
     private UserInfo mUserInfo;
     private Context mContext = this;
     private int mScore;
+    private Button mHighscoreButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ChooseGameModeActivity extends Activity {
         mChooseModeButton1 = (Button) findViewById(R.id.chooseCatButton1);
         mChooseModeButton2 = (Button) findViewById(R.id.chooseCatButton2);
         mChooseModeTextView = (TextView) findViewById(R.id.chooseCatTextView);
+        mHighscoreButton = (Button) findViewById(R.id.highscoreButon);
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
@@ -60,6 +62,15 @@ public class ChooseGameModeActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, chooseCategoryActivity.class);
+                intent.putExtra("username", mUsername);
+                startActivity(intent);
+
+            }
+        });
+        mHighscoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, HighscoreActivity.class);
                 intent.putExtra("username", mUsername);
                 startActivity(intent);
 

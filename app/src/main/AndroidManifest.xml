@@ -80,6 +80,16 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="perchello.hangman.UI.ChooseGameModeActivity" />
         </activity>
+        <activity
+            android:name=".UI.HighscoreActivity"
+            android:label="@string/title_activity_highscore"
+            android:parentActivityName=".UI.ChooseGameModeActivity"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.ChooseGameModeActivity"
+                />
+        </activity>
     </application>
 
 </manifest>

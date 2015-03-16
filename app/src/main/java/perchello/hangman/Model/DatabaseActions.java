@@ -3,6 +3,7 @@ package perchello.hangman.Model;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.CursorIndexOutOfBoundsException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -116,6 +117,28 @@ public class DatabaseActions extends SQLiteOpenHelper {
             result [i] = cursor.getString(i+1);
         }
 
+        return result;
+    }
+    public String getHighscore (){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String result = new String();
+        Cursor cursor = db.query(DATABASE_NAME, new String[] { NAME,
+                        SCORE }, null, null,
+                null, null, SCORE + " DESC");;
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        try {
+            while(cursor.getString(0)!= null) {
+                result += cursor.getString(0)+ " " +cursor.getInt(1) + " ";
+                Log.d ("Cursor name and score",cursor.getString(0) +" " +cursor.getInt(1));
+                cursor.moveToNext();
+            }
+        } catch (NullPointerException npe){
+            Log.d ("Exception", npe.getMessage());
+        } catch (CursorIndexOutOfBoundsException cioobe){
+            Log.d ("Exception", cioobe.getMessage());
+        }
         return result;
     }
     public void updateScoreSingleGame (String name, int score){

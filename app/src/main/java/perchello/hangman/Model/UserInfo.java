@@ -1,6 +1,7 @@
 package perchello.hangman.Model;
 
 import android.content.Context;
+import android.util.Log;
 
 public class UserInfo {
     private DatabaseActions mDatabaseActions;
@@ -69,5 +70,10 @@ public class UserInfo {
 
     public String getName() {
         return mName;
+    }
+    public String getHighscore() {
+        String result = mDatabaseActions.getHighscore();
+        Log.d("String result is ", result);
+        return result;
     }
 }

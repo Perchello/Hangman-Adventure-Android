@@ -1,0 +1,52 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="perchello.hangman.UI.HighscoreActivity"
+                android:background="@drawable/papertexture">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Top 10 players: "
+        android:id="@+id/highscoreTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/highscoreNameTextView"
+        android:textSize="15sp"
+        android:layout_alignLeft="@+id/highscoreTextView"
+        android:layout_alignStart="@+id/highscoreTextView"
+        android:layout_below="@+id/highscoreTextView"
+        android:gravity="left"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/highscoreScoreTextView"
+        android:textSize="15sp"
+        android:gravity="left"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView"
+        android:layout_below="@+id/highscoreTextView"
+        android:paddingLeft="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_below="@+id/highscoreTextView"
+        android:layout_centerHorizontal="true"
+        android:text=" "/>
+
+</RelativeLayout>
