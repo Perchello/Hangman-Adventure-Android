@@ -10,7 +10,7 @@ public class UserInfo {
     private int mScore;
     private int [] mAdvProgress;
     private String [] mAdvDone;
-    private static final int MAXADVNUMBER=2;
+    private static final int MAXADVNUMBER=3;
 
     public UserInfo(String name, Context context) {
         mName = name;
@@ -58,6 +58,9 @@ public class UserInfo {
     }
 
     public String getAdvDone(int advNumber) {
+        if (mAdvDone[advNumber-1]==null){
+            mAdvDone[advNumber-1]="";
+        }
         return mAdvDone[advNumber-1];
     }
 

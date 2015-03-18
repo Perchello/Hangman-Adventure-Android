@@ -90,4 +90,26 @@
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="3dp"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brazil"
+        android:id="@+id/chooseCatButton3"
+        android:layout_below="@+id/chooseCatButton2"
+        android:layout_alignRight="@+id/chooseCatButton2"
+        android:layout_alignEnd="@+id/chooseCatButton2"
+        android:layout_alignLeft="@+id/chooseCatButton2"
+        android:layout_alignStart="@+id/chooseCatButton2"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0 / 0"
+        android:id="@+id/resultAdvTextView3"
+        android:layout_alignBottom="@+id/chooseCatButton3"
+        android:layout_toRightOf="@+id/chooseCatButton3"
+        android:layout_toEndOf="@+id/chooseCatButton3"
+        android:layout_marginLeft="3dp"
+        android:layout_marginBottom="15dp"/>
+
 </RelativeLayout>

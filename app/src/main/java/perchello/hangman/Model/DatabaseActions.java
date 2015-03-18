@@ -18,10 +18,12 @@ public class DatabaseActions extends SQLiteOpenHelper {
     private static final String ADVWORDSDONE1 ="advdwordsdone1";
     private static final String ADVPROGRESS2 ="advprogress2";
     private static final String ADVWORDSDONE2 ="advdwordsdone2";
+    private static final String ADVPROGRESS3 ="advprogress3";
+    private static final String ADVWORDSDONE3 ="advdwordsdone3";
 
 
     public DatabaseActions(Context context) {
-    super(context, DATABASE_NAME, null, 3);
+    super(context, DATABASE_NAME, null, 4);
     }
 
     @Override
@@ -33,7 +35,9 @@ public class DatabaseActions extends SQLiteOpenHelper {
                 + ADVPROGRESS1 + ", "
                 + ADVWORDSDONE1 + ", "
                 + ADVPROGRESS2 + ", "
-                + ADVWORDSDONE2 + ");");
+                + ADVWORDSDONE2 + ", "
+                + ADVPROGRESS3 + ", "
+                + ADVWORDSDONE3 +");");
 
     }
 
@@ -41,20 +45,31 @@ public class DatabaseActions extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         Log.d ("Old version", String.valueOf(oldVersion));
         Log.d ("New version", String.valueOf(newVersion));
-        db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
-
-         onCreate(db);
+        if (oldVersion==3){
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVPROGRESS3 + " INTEGER DEFAULT 0;");
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVWORDSDONE3 + " TEXT;");
+        }
+        else {
+            db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
+            onCreate(db);
+        }
 
         }
 
     public void setName(String name) {
-        ContentValues values=new ContentValues(4);
+        ContentValues values=new ContentValues(6);
         values.put(NAME, name);
         values.put (SCORE, 0);
         values.put (ADVPROGRESS1, 0);
         values.put (ADVWORDSDONE1, "");
         values.put (ADVPROGRESS2, 0);
         values.put (ADVWORDSDONE2, "");
+        values.put (ADVPROGRESS3, 0);
+        values.put (ADVWORDSDONE3, "");
         getWritableDatabase().insert(DATABASE_NAME, null, values);
         close();
     }
@@ -90,7 +105,7 @@ public class DatabaseActions extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         int [] result = new int[maxAdvNumber];
         Cursor cursor = db.query(DATABASE_NAME,
-                new String[] { NAME, ADVPROGRESS1, ADVPROGRESS2},
+                new String[] { NAME, ADVPROGRESS1, ADVPROGRESS2, ADVPROGRESS3},
                 NAME + " = ?",
                 new String [] {name}
                 , null, null, null, null);
@@ -106,7 +121,7 @@ public class DatabaseActions extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String [] result = new String [maxAdvNumber];
         Cursor cursor = db.query(DATABASE_NAME,
-                new String[] { NAME, ADVWORDSDONE1, ADVWORDSDONE2 },
+                new String[] { NAME, ADVWORDSDONE1, ADVWORDSDONE2, ADVWORDSDONE3 },
                 NAME + " = ?",
                 new String [] {name}
                 , null, null, null, null);
