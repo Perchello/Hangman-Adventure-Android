@@ -26,6 +26,9 @@ public class chooseCategoryActivity extends Activity {
     private Button mButton3;
     private Button mAdvCatButton1;
     private Button mAdvCatButton2;
+    private Button mAdvCatButton3;
+    private Button mAdvCatButton4;
+    private Button mAdvCatButton5;
     private int mScore;
     private TextView mUsernameView;
     private TextView mScoreView;
@@ -35,6 +38,9 @@ public class chooseCategoryActivity extends Activity {
     private Context mContext = this;
     private int sizeAdv1;
     private  int sizeAdv2;
+    private  int sizeAdv3;
+    private  int sizeAdv4;
+    private  int sizeAdv5;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,9 @@ public class chooseCategoryActivity extends Activity {
         mButton3 = (Button) findViewById(R.id.chooseCatButton3);
         mAdvCatButton1 = (Button) findViewById(R.id.chooseAdvCatButton1);
         mAdvCatButton2 = (Button) findViewById(R.id.chooseAdvCatButton2);
+        mAdvCatButton3 = (Button) findViewById(R.id.chooseAdvCatButton3);
+        mAdvCatButton4 = (Button) findViewById(R.id.chooseAdvCatButton4);
+        mAdvCatButton5 = (Button) findViewById(R.id.chooseAdvCatButton5);
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
         mChooseCatTextView = (TextView) findViewById(R.id.chooseCatTextView);
@@ -58,6 +67,9 @@ public class chooseCategoryActivity extends Activity {
         mChooseCatTextView.setTypeface(typeface);
         sizeAdv1 = countLines (1);
         sizeAdv2 = countLines (2);
+        sizeAdv3 = countLines (3);
+        sizeAdv4 = countLines (4);
+        sizeAdv5 = countLines (5);
         final Intent intent = new Intent(this, GameActivity.class);
 
         mButton1.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +133,54 @@ public class chooseCategoryActivity extends Activity {
                 }
             }
         });
+        mAdvCatButton3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mUserInfo.getAdvProgress(3) < sizeAdv3){
+                    Toast.makeText(mContext, "To unlock you need to finish Brazil adventure", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    String choose = "brazil.txt";
+                    intent.putExtra("choose", choose);
+                    intent.putExtra("username", mUsername);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+        mAdvCatButton4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mUserInfo.getAdvProgress(4) < sizeAdv4){
+                    Toast.makeText(mContext, "To unlock you need to finish Mexico adventure", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    String choose = "mexico.txt";
+                    intent.putExtra("choose", choose);
+                    intent.putExtra("username", mUsername);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
+        mAdvCatButton5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mUserInfo.getAdvProgress(5) < sizeAdv5){
+                    Toast.makeText(mContext, "To unlock you need to finish Italy adventure", Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    String choose = "italy.txt";
+                    intent.putExtra("choose", choose);
+                    intent.putExtra("username", mUsername);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        });
     }
     private int countLines(int advNumber){
         int result =0;
@@ -134,6 +194,15 @@ public class chooseCategoryActivity extends Activity {
             }
             else if (advNumber==2){
                 fileOpen = assetManager.open("china.txt");
+            }
+            else if (advNumber==3){
+                fileOpen = assetManager.open("brazil.txt");
+            }
+            else if (advNumber==4){
+                fileOpen = assetManager.open("mexico.txt");
+            }
+            else if (advNumber==5){
+                fileOpen = assetManager.open("italy.txt");
             }
             BufferedReader buffReader= new BufferedReader(new InputStreamReader(fileOpen));
 

@@ -22,34 +22,91 @@
             android:textColor="@android:color/black"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="42dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/chooseCatTextView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
         android:id="@+id/linearLayout1"
         >
-        <Button
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="Animals"
-            android:id="@+id/chooseCatButton1"
-            />
 
-        <Button
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="Countries"
-            android:id="@+id/chooseCatButton2"
-            />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:text="Random words"
-            android:id="@+id/chooseCatButton3"
-            android:layout_weight="1"/>
+            <Button
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Animals"
+                android:id="@+id/chooseCatButton1"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Egypt"
+                android:id="@+id/chooseAdvCatButton1"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_weight="1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mexico"
+                android:id="@+id/chooseAdvCatButton4"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Countries"
+                android:id="@+id/chooseCatButton2"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="China"
+            android:id="@+id/chooseAdvCatButton2"
+            android:layout_above="@+id/chooseAdvCatButton1"
+            android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Italy"
+                android:id="@+id/chooseAdvCatButton5"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Random words"
+                android:id="@+id/chooseCatButton3"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Brazil"
+                android:id="@+id/chooseAdvCatButton3"/>
+        </LinearLayout>
 
 
     </LinearLayout>
@@ -75,31 +132,4 @@
         android:textSize="18sp"
         android:singleLine="true"
         android:textColor="@android:color/black"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:id="@+id/linearLayout2"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true">
-    <Button
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:text="Egypt"
-        android:id="@+id/chooseAdvCatButton1"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_weight="1"/>
-
-    <Button
-        android:layout_weight="1"
-        android:layout_width="0dp
-        "
-        android:layout_height="match_parent"
-        android:text="China"
-        android:id="@+id/chooseAdvCatButton2"
-        android:layout_above="@+id/chooseAdvCatButton1"
-        android:layout_centerHorizontal="true"/>
-    </LinearLayout>
 </RelativeLayout>
