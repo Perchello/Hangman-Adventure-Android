@@ -22,30 +22,6 @@
         android:gravity="center_horizontal"
         android:textColor="@android:color/black"/>
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Egypt"
-        android:id="@+id/chooseCatButton1"
-        android:layout_below="@+id/chooseCatTextView"
-        android:layout_alignRight="@+id/chooseCatTextView"
-        android:layout_alignEnd="@+id/chooseCatTextView"
-        android:layout_alignLeft="@+id/chooseCatTextView"
-        android:layout_alignStart="@+id/chooseCatTextView"
-        android:layout_marginTop="10dp"
-        />
-
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="China"
-        android:id="@+id/chooseCatButton2"
-        android:layout_below="@+id/chooseCatButton1"
-        android:layout_alignRight="@+id/chooseCatButton1"
-        android:layout_alignEnd="@+id/chooseCatButton1"
-        android:layout_alignLeft="@+id/chooseCatButton1"
-        android:layout_alignStart="@+id/chooseCatButton1"/>
-
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -69,47 +45,152 @@
         android:textSize="18sp"
         android:textColor="@android:color/black"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7 / 20"
-        android:id="@+id/resultAdvTextView1"
-        android:layout_toRightOf="@+id/chooseCatButton1"
-        android:layout_toEndOf="@+id/chooseCatButton1"
-        android:layout_alignBottom="@+id/chooseCatButton1"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="3dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="7 / 20"
-        android:id="@+id/resultAdvTextView2"
-        android:layout_toRightOf="@+id/chooseCatButton2"
-        android:layout_toEndOf="@+id/chooseCatButton2"
-        android:layout_alignBottom="@+id/chooseCatButton2"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="3dp"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/chooseCatTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Brazil"
-        android:id="@+id/chooseCatButton3"
-        android:layout_below="@+id/chooseCatButton2"
-        android:layout_alignRight="@+id/chooseCatButton2"
-        android:layout_alignEnd="@+id/chooseCatButton2"
-        android:layout_alignLeft="@+id/chooseCatButton2"
-        android:layout_alignStart="@+id/chooseCatButton2"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0 / 0"
-        android:id="@+id/resultAdvTextView3"
-        android:layout_alignBottom="@+id/chooseCatButton3"
-        android:layout_toRightOf="@+id/chooseCatButton3"
-        android:layout_toEndOf="@+id/chooseCatButton3"
-        android:layout_marginLeft="3dp"
-        android:layout_marginBottom="15dp"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. Egypt"
+                android:id="@+id/chooseCatButton1"
+                android:layout_below="@+id/chooseCatTextView"
+                android:layout_alignRight="@+id/chooseCatTextView"
+                android:layout_alignEnd="@+id/chooseCatTextView"
+                android:layout_alignLeft="@+id/chooseCatTextView"
+                android:layout_alignStart="@+id/chooseCatTextView"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="4. Mexico"
+                android:id="@+id/chooseCatButton4"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 / 20"
+                android:id="@+id/resultAdvTextView1"
+                android:layout_toRightOf="@+id/chooseCatButton1"
+                android:layout_toEndOf="@+id/chooseCatButton1"
+                android:layout_alignBottom="@+id/chooseCatButton1"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 / 20"
+                android:id="@+id/resultAdvTextView4"
+                android:layout_marginTop="33dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. China"
+                android:id="@+id/chooseCatButton2"
+                android:layout_below="@+id/chooseCatButton1"
+                android:layout_alignRight="@+id/chooseCatButton1"
+                android:layout_alignEnd="@+id/chooseCatButton1"
+                android:layout_alignLeft="@+id/chooseCatButton1"
+                android:layout_alignStart="@+id/chooseCatButton1"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="5. Italy"
+                android:id="@+id/chooseCatButton5"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="3dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 / 20"
+                android:id="@+id/resultAdvTextView2"
+                android:layout_toRightOf="@+id/chooseCatButton2"
+                android:layout_toEndOf="@+id/chooseCatButton2"
+                android:layout_alignBottom="@+id/chooseCatButton2"
+                android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 / 20"
+                android:id="@+id/resultAdvTextView5"
+                android:layout_marginTop="33dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. Brazil"
+                android:id="@+id/chooseCatButton3"
+                android:layout_below="@+id/chooseCatButton2"
+                android:layout_alignRight="@+id/chooseCatButton2"
+                android:layout_alignEnd="@+id/chooseCatButton2"
+                android:layout_alignLeft="@+id/chooseCatButton2"
+                android:layout_alignStart="@+id/chooseCatButton2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 0"
+                android:id="@+id/resultAdvTextView3"
+                android:layout_alignBottom="@+id/chooseCatButton3"
+                android:layout_toRightOf="@+id/chooseCatButton3"
+                android:layout_toEndOf="@+id/chooseCatButton3"
+                android:layout_marginTop="15dp"/>
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>
