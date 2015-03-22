@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.CursorIndexOutOfBoundsException;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -163,9 +164,12 @@ public class DatabaseActions extends SQLiteOpenHelper {
 
         return result;
     }
-    public String getHighscore (){
+    public String[] getHighscore (){
         SQLiteDatabase db = this.getReadableDatabase();
-        String result = new String();
+        long numRows = DatabaseUtils.queryNumEntries(db, DATABASE_NAME);
+        Log.d ("Number of rows is ", numRows+"");
+
+        String [] result = new String [(int) numRows*2];
         Cursor cursor = db.query(DATABASE_NAME, new String[] { NAME,
                         SCORE }, null, null,
                 null, null, SCORE + " DESC");;
@@ -173,11 +177,16 @@ public class DatabaseActions extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         try {
-            while(cursor.getString(0)!= null) {
-                result += cursor.getString(0)+ " " +cursor.getInt(1) + " ";
-                Log.d ("Cursor name and score",cursor.getString(0) +" " +cursor.getInt(1));
+            int k=0;
+            for (int i = 0; i<numRows; i++){
+
+                result[k] = cursor.getString(0);
+                result[k+1] = cursor.getInt(1)+"";
+                k+=2;
                 cursor.moveToNext();
+
             }
+
         } catch (NullPointerException npe){
             Log.d ("Exception", npe.getMessage());
         } catch (CursorIndexOutOfBoundsException cioobe){

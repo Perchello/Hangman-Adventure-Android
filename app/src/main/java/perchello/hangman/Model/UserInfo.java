@@ -74,9 +74,5 @@ public class UserInfo {
     public String getName() {
         return mName;
     }
-    public String getHighscore() {
-        String result = mDatabaseActions.getHighscore();
-        Log.d("String result is ", result);
-        return result;
-    }
+
 }
