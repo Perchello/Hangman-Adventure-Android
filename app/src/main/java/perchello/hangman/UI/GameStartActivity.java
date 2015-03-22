@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import perchello.hangman.Model.ConnectDatabase;
 import perchello.hangman.R;
 
 
@@ -27,6 +29,7 @@ public class GameStartActivity extends Activity {
         mGameNameTextView = (TextView) findViewById(R.id.nameTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
         mGameNameTextView.setTypeface(typeface);
+        // ConnectDatabase db = new ConnectDatabase();
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

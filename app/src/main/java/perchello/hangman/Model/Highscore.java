@@ -9,6 +9,8 @@ public class Highscore {
     private DatabaseActions mDatabaseActions;
     private String [] mNames;
     private String [] mScores;
+    private String mName;
+    private int mScore;
 
     public Highscore() {
 
@@ -45,5 +47,21 @@ public class Highscore {
 
     public void setNames(String[] names) {
         mNames = names;
+    }
+
+    public int getScore() {
+        return mScore;
+    }
+
+    public void setScore(int score) {
+        mScore = score;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String name) {
+        mName = name;
     }
 }

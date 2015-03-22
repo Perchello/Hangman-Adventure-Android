@@ -41,7 +41,8 @@ public class HighscoreAdapter extends RecyclerView.Adapter<HighscoreAdapter.High
 
     @Override
     public void onBindViewHolder(HighscoreViewHolder holder, int position) {
-        holder.bindHighscore((position+1)+"", mName[position], mScore[position]);
+            holder.bindHighscore((position + 1) + "", mName[position], mScore[position]);
+
     }
 
     @Override

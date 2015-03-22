@@ -12,5 +12,6 @@
     <string name="title_activity_adventure_game">AdventureGameActivity</string>
     <string name="title_activity_adventure_result">AdventureResultActivity</string>
     <string name="title_activity_highscore">HighscoreActivity</string>
+    <string name="title_activity_test">TestActivity</string>
 
 </resources>
