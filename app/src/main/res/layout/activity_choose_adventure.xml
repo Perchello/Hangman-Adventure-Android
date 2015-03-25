@@ -80,6 +80,12 @@
                 android:layout_height="wrap_content"
                 android:text="4. Mexico"
                 android:id="@+id/chooseCatButton4"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="7. Canada"
+                android:id="@+id/chooseCatButton7"/>
         </LinearLayout>
 
         <LinearLayout
@@ -105,7 +111,14 @@
                 android:layout_height="wrap_content"
                 android:text="7 / 20"
                 android:id="@+id/resultAdvTextView4"
-                android:layout_marginTop="33dp"/>
+                android:layout_marginTop="28dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 0"
+                android:id="@+id/resultAdvTextView7"
+                android:layout_marginTop="28dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -154,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:text="7 / 20"
                 android:id="@+id/resultAdvTextView5"
-                android:layout_marginTop="33dp"/>
+                android:layout_marginTop="28dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -173,6 +186,12 @@
                 android:layout_alignEnd="@+id/chooseCatButton2"
                 android:layout_alignLeft="@+id/chooseCatButton2"
                 android:layout_alignStart="@+id/chooseCatButton2"/>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="6. Spain"
+                android:id="@+id/chooseCatButton6"/>
         </LinearLayout>
 
         <LinearLayout
@@ -190,6 +209,13 @@
                 android:layout_toRightOf="@+id/chooseCatButton3"
                 android:layout_toEndOf="@+id/chooseCatButton3"
                 android:layout_marginTop="15dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 / 0"
+                android:id="@+id/resultAdvTextView6"
+                android:layout_marginTop="28dp"/>
         </LinearLayout>
     </LinearLayout>
 

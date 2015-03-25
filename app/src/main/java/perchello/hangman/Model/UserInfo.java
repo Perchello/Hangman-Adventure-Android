@@ -10,7 +10,7 @@ public class UserInfo {
     private int mScore;
     private int [] mAdvProgress;
     private String [] mAdvDone;
-    private static final int MAXADVNUMBER=5;
+    private static final int MAXADVNUMBER=7;
 
     public UserInfo(String name, Context context) {
         mName = name;

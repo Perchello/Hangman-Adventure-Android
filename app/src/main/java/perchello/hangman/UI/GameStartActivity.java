@@ -29,7 +29,7 @@ public class GameStartActivity extends Activity {
         mGameNameTextView = (TextView) findViewById(R.id.nameTextView);
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
         mGameNameTextView.setTypeface(typeface);
-        // ConnectDatabase db = new ConnectDatabase();
+        //ConnectDatabase db = new ConnectDatabase();
         mStartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -25,10 +25,14 @@ public class DatabaseActions extends SQLiteOpenHelper {
     private static final String ADVWORDSDONE4 ="advdwordsdone4";
     private static final String ADVPROGRESS5 ="advprogress5";
     private static final String ADVWORDSDONE5 ="advdwordsdone5";
+    private static final String ADVPROGRESS6 ="advprogress6";
+    private static final String ADVWORDSDONE6 ="advdwordsdone6";
+    private static final String ADVPROGRESS7 ="advprogress7";
+    private static final String ADVWORDSDONE7 ="advdwordsdone7";
 
 
     public DatabaseActions(Context context) {
-    super(context, DATABASE_NAME, null, 5);
+    super(context, DATABASE_NAME, null, 6);
     }
 
     @Override
@@ -46,7 +50,11 @@ public class DatabaseActions extends SQLiteOpenHelper {
                 + ADVPROGRESS4 + ", "
                 + ADVWORDSDONE4 + ", "
                 + ADVPROGRESS5 + ", "
-                + ADVWORDSDONE5 +");");
+                + ADVWORDSDONE5 + ", "
+                + ADVPROGRESS6 + ", "
+                + ADVWORDSDONE6 + ", "
+                + ADVPROGRESS7 + ", "
+                + ADVWORDSDONE7+");");
 
     }
 
@@ -79,6 +87,21 @@ public class DatabaseActions extends SQLiteOpenHelper {
             oldVersion=5;
 
         }
+        if (oldVersion ==5) {
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVPROGRESS6 + " INTEGER DEFAULT 0;");
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVWORDSDONE6 + " TEXT;");
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVPROGRESS7 + " INTEGER DEFAULT 0;");
+            db.execSQL("ALTER TABLE "
+                    + DATABASE_NAME + " ADD COLUMN "
+                    + ADVWORDSDONE7 + " TEXT;");
+            oldVersion=6;
+        }
         else {
             db.execSQL("DROP TABLE IF EXISTS " + DATABASE_NAME);
             onCreate(db);
@@ -100,6 +123,10 @@ public class DatabaseActions extends SQLiteOpenHelper {
         values.put (ADVWORDSDONE4, "");
         values.put (ADVPROGRESS5, 0);
         values.put (ADVWORDSDONE5, "");
+        values.put (ADVPROGRESS6, 0);
+        values.put (ADVWORDSDONE6, "");
+        values.put (ADVPROGRESS7, 0);
+        values.put (ADVWORDSDONE7, "");
         getWritableDatabase().insert(DATABASE_NAME, null, values);
         close();
     }
@@ -135,7 +162,8 @@ public class DatabaseActions extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         int [] result = new int[maxAdvNumber];
         Cursor cursor = db.query(DATABASE_NAME,
-                new String[] { NAME, ADVPROGRESS1, ADVPROGRESS2, ADVPROGRESS3, ADVPROGRESS4, ADVPROGRESS5},
+                new String[] { NAME, ADVPROGRESS1, ADVPROGRESS2, ADVPROGRESS3, ADVPROGRESS4, ADVPROGRESS5
+                               , ADVPROGRESS6, ADVPROGRESS7},
                 NAME + " = ?",
                 new String [] {name}
                 , null, null, null, null);
@@ -151,7 +179,8 @@ public class DatabaseActions extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String [] result = new String [maxAdvNumber];
         Cursor cursor = db.query(DATABASE_NAME,
-                new String[] { NAME, ADVWORDSDONE1, ADVWORDSDONE2, ADVWORDSDONE3, ADVWORDSDONE4, ADVWORDSDONE5 },
+                new String[] { NAME, ADVWORDSDONE1, ADVWORDSDONE2, ADVWORDSDONE3, ADVWORDSDONE4, ADVWORDSDONE5
+                               , ADVWORDSDONE6, ADVWORDSDONE7},
                 NAME + " = ?",
                 new String [] {name}
                 , null, null, null, null);
