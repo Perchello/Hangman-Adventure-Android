@@ -72,7 +72,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         AssetManager assetManager = getAssets();
         Bundle bundle = new Bundle();
-        mUserInfo = new UserInfo(intent.getStringExtra("username"), mContext);
+        mUserInfo = new UserInfo();
         if ((bundle != null) && (bundle.getSerializable("starttime") != null)) {
            mHangmanGameLogic.setHits(bundle.getString("mHits"));
             mHangmanGameLogic.setMisses(bundle.getString("mMisses"));
@@ -110,7 +110,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         mHeroImageView = (ImageView) findViewById(R.id.heroImageView);
         mEvilGuyImageView = (ImageView) findViewById(R.id.evilGuyImageView);
         mUsername = mUserInfo.getName();
-        mScore = mUserInfo.getScore(mUsername);
+        mScore = mUserInfo.getScore();
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score: " + mScore+ "  ");
         mHangmanGameLogic = new HangmanGameLogic(mWords[mWordNumber].toLowerCase());
@@ -228,11 +228,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         state.putString ("mMisses", mHangmanGameLogic.getMisses());
         state.putString ("mGameName", mHangmanGameLogic.getGameName());
     }
-    private void updateScore (){
-        mScore = mUserInfo.getScore(mUsername);
-        mScoreView.setText("Score: " + mScore + " ");
 
-    }
     private void changePicture(){
         /*if (mGame.getMisses().length()>0 && mGame.getMisses().length()<=6) {
             int pictureId = mContext.getResources().getIdentifier("palach" + mGame.getMisses().length(), "drawable", mContext.getPackageName());

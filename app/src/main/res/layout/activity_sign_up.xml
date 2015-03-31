@@ -1,0 +1,72 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                tools:context="perchello.hangman.UI.SignUpActivity"
+                android:background="@drawable/papertexture">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register new account"
+        android:id="@+id/registerTextView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="25sp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/usernameSignupEditView"
+        android:layout_below="@+id/registerTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/registerTextView"
+        android:layout_alignRight="@+id/registerTextView"
+        android:hint="Username"
+        android:singleLine="true"
+        android:capitalize="words"
+        android:inputType="textCapSentences|textPersonName"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailSignupEditView"
+        android:layout_below="@+id/usernameSignupEditView"
+        android:layout_centerHorizontal="true"
+        android:hint="Email"
+        android:layout_alignLeft="@+id/usernameSignupEditView"
+        android:layout_alignRight="@+id/usernameSignupEditView"
+        android:singleLine="true"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/passwordSignupEditView"
+        android:layout_below="@+id/emailSignupEditView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignRight="@+id/emailSignupEditView"
+        android:layout_alignLeft="@+id/usernameSignupEditView"
+        android:hint="Password"
+        android:capitalize="words"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:id="@+id/signupButton"
+        android:layout_below="@+id/passwordSignupEditView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignLeft="@+id/usernameSignupEditView"
+        android:layout_alignRight="@+id/usernameSignupEditView"
+        android:singleLine="true"/>
+</RelativeLayout>

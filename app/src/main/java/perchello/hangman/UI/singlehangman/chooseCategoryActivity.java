@@ -56,8 +56,8 @@ public class chooseCategoryActivity extends Activity {
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
         mChooseCatTextView = (TextView) findViewById(R.id.chooseCatTextView);
-        mUserInfo = new UserInfo(getIntent().getStringExtra("username"), mContext);
-        mScore= mUserInfo.getScore(mUserInfo.getName());
+        mUserInfo = new UserInfo();
+        mScore= mUserInfo.getScore();
         mUsername = mUserInfo.getName();
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score : " + mScore + "  ");

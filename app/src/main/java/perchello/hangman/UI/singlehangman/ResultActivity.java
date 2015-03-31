@@ -36,9 +36,9 @@ public class ResultActivity extends Activity {
         mUsername = intent.getStringExtra("username");
         mUsernameView = (TextView) findViewById(R.id.usernameTextView);
         mScoreView = (TextView) findViewById(R.id.scoreTextView);
-        mUserInfo = new UserInfo(intent.getStringExtra("username"), mContext);
+        mUserInfo = new UserInfo();
         mUsername = mUserInfo.getName();
-        mScore = mUserInfo.getScore(mUsername);
+        mScore = mUserInfo.getScore();
         mUsernameView.setText("Welcome " + mUsername + "!  ");
         mScoreView.setText("Score: " + mScore + "  ");
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");

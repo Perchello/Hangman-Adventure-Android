@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="perchello.hangman" >
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".HangmanApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".UI.GameStartActivity"
+            android:name=".LoadingActivity"
             android:label="@string/app_name"
-            android:screenOrientation="landscape" >
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".UI.ChooseGameModeActivity"
+            android:label="@string/title_activity_choose_game_mode"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape" >
+
+        </activity>
+        <activity
+            android:name=".UI.GameStartActivity"
+            android:label="@string/title_activity_game_start"
+            android:screenOrientation="landscape" >
         </activity>
         <activity
             android:name=".UI.singlehangman.GameActivity"
@@ -39,15 +54,6 @@
         <activity
             android:name=".UI.singlehangman.chooseCategoryActivity"
             android:label="@string/title_activity_choose_category"
-            android:parentActivityName=".UI.GameStartActivity"
-            android:screenOrientation="landscape" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="perchello.hangman.UI.GameStartActivity" />
-        </activity>
-        <activity
-            android:name=".UI.ChooseGameModeActivity"
-            android:label="@string/title_activity_choose_game_mode"
             android:parentActivityName=".UI.GameStartActivity"
             android:screenOrientation="landscape" >
             <meta-data
@@ -91,9 +97,39 @@
                 android:value="perchello.hangman.UI.ChooseGameModeActivity" />
         </activity>
         <activity
-            android:name=".TestActivity"
-            android:label="@string/title_activity_test" >
+            android:name=".UI.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:parentActivityName=".UI.GameStartActivity"
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.GameStartActivity" />
         </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".UI.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".UI.LoginActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".ForgotPassword"
+            android:label="@string/title_activity_forgot_password"
+            android:parentActivityName=".UI.LoginActivity"
+            android:screenOrientation="landscape" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="perchello.hangman.UI.LoginActivity" />
+        </activity>
+
     </application>
 
 </manifest>

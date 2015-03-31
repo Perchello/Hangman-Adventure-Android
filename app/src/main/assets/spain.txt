@@ -1,4 +1,4 @@
-pyrenees
+Pyrenees
 Madrid
 Aragon
 Castile
@@ -9,7 +9,6 @@ Inquisition
 Armada
 Carthaginian
 Vandal
-Cession
 Galleon
 Ratification
 Corsica

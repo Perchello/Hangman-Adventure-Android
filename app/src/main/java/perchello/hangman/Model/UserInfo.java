@@ -3,52 +3,44 @@ package perchello.hangman.Model;
 import android.content.Context;
 import android.util.Log;
 
+import com.parse.ParseUser;
+
+import perchello.hangman.ParseConstants;
+
 public class UserInfo {
-    private DatabaseActions mDatabaseActions;
-    private Context mContext;
     private String mName;
     private int mScore;
     private int [] mAdvProgress;
     private String [] mAdvDone;
     private static final int MAXADVNUMBER=7;
+    private ParseUser mCurrentUser;
 
-    public UserInfo(String name, Context context) {
-        mName = name;
-        setContext(context);
-        setName(mName);
-        mScore = getScore(mName);
-        mAdvProgress = mDatabaseActions.getAdvProgress(mName, MAXADVNUMBER);
-        mAdvDone = mDatabaseActions.getAdvDone(mName, MAXADVNUMBER);
+
+    public UserInfo() {
+        mCurrentUser = ParseUser.getCurrentUser();
+        mName = mCurrentUser.getUsername();
+        mScore = (int) mCurrentUser.get("score");
+        setAdvProgress();
     }
 
-    public void setContext(Context context) {
+    private void setAdvProgress() {
+        mAdvProgress = new int [MAXADVNUMBER];
+        mAdvDone = new String [MAXADVNUMBER];
 
-        mContext = context;
-        mDatabaseActions = new DatabaseActions(mContext);
-    }
+        for (int i = 0; i<MAXADVNUMBER; i++){
+            Log.i ("Check", ParseConstants.KEY_ADVPROGRESS+(i+1));
+            mAdvProgress[i]= (int) mCurrentUser.get(ParseConstants.KEY_ADVPROGRESS+(i+1));
+            mAdvDone[i]= (String) mCurrentUser.get(ParseConstants.KEY_ADVWORDSDONE+(i+1));
+            Log.i ("Setting adv prog:", mAdvProgress[i]+"");
 
-    public void setName(String name) {
-        mName = name;
-        if (mDatabaseActions.checkName(name)) {
-            mDatabaseActions.setName(name);
-            mScore = 0;
-        } else {
-            mScore = getScore(name);
         }
+
     }
 
     public void addScoreSingleGame(int score) {
         mScore += score;
-        try {
-            mDatabaseActions.checkName(mName);
-            mDatabaseActions.updateScoreSingleGame(mName, mScore);
-        } catch (Exception e) {
-        }
-
-    }
-
-    public int getScore(String name) {
-        return mDatabaseActions.getScore(name);
+        mCurrentUser.put(ParseConstants.KEY_SCORE, mScore);
+        mCurrentUser.saveInBackground();
     }
 
 
@@ -58,9 +50,7 @@ public class UserInfo {
     }
 
     public String getAdvDone(int advNumber) {
-        if (mAdvDone[advNumber-1]==null){
-            mAdvDone[advNumber-1]="";
-        }
+
         return mAdvDone[advNumber-1];
     }
 
@@ -68,11 +58,17 @@ public class UserInfo {
         mAdvDone [advNumber-1] += " " + advDone;
         mAdvProgress[advNumber-1]++;
         mScore+= hits;
-        mDatabaseActions.updateScoreAdventure(mName, advNumber, mAdvDone[advNumber-1], mAdvProgress[advNumber-1], mScore);
+        mCurrentUser.put (ParseConstants.KEY_ADVWORDSDONE+advNumber, mAdvDone[advNumber-1]);
+        mCurrentUser.put(ParseConstants.KEY_ADVPROGRESS+advNumber, mAdvProgress[advNumber-1]);
+        mCurrentUser.put (ParseConstants.KEY_SCORE, mScore);
+        mCurrentUser.saveInBackground();
     }
 
     public String getName() {
         return mName;
+    }
+    public int getScore(){
+        return mScore;
     }
 
 }
