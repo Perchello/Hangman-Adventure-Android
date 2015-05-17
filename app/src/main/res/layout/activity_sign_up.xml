@@ -30,7 +30,8 @@
         android:hint="Username"
         android:singleLine="true"
         android:capitalize="words"
-        android:inputType="textCapSentences|textPersonName"/>
+        android:inputType="textCapSentences|textPersonName"
+        android:maxLength="16"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,7 +58,8 @@
         android:layout_alignLeft="@+id/usernameSignupEditView"
         android:hint="Password"
         android:capitalize="words"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:maxLength="16"/>
 
     <Button
         android:layout_width="wrap_content"

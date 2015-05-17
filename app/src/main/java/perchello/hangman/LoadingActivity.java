@@ -1,8 +1,13 @@
 package perchello.hangman;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,18 +36,53 @@ public class LoadingActivity extends Activity {
         Typeface typeface = Typeface.createFromAsset(getAssets(), "fonts/Fedora.ttf");
         mLoadingText.setTypeface(typeface);
         ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser == null) {
-            navigateToLogin();
-        }
-        else {
-            currentUser.fetchInBackground(new GetCallback<ParseObject>() {
-                @Override
-                public void done(ParseObject parseObject, ParseException e) {
-                    Log.i("Navigating to choosemod", "yes");
-                    navigateToChooseGameMode();
+        if (isNetworkAvailable()) {
+
+            if (!(boolean) currentUser.get(ParseConstants.KEY_OFFLINE)) {
+
+                if (currentUser == null) {
+                    navigateToLogin();
+                } else {
+                    currentUser.fetchInBackground(new GetCallback<ParseObject>() {
+                        @Override
+                        public void done(ParseObject parseObject, ParseException e) {
+                            Log.i("Navigating to choosemod", "yes");
+                            navigateToChooseGameMode();
+
+                        }
+                    });
 
                 }
-            });
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoadingActivity.this);
+                builder.setMessage("You played offline for a while. Do you want to update your record online?")
+                        .setTitle("Network is available")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(LoadingActivity.this, UpdateActivity.class);
+                                finish();
+                                startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                navigateToChooseGameMode();
+                            }
+                        });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        }
+        else {
+            if (currentUser == null) {
+                navigateToLogin();
+            } else {
+                currentUser.put("playedOffline", true);
+                currentUser.put(ParseConstants.KEY_SCORE, 0);
+                navigateToChooseGameMode();
+            }
 
         }
     }
@@ -58,6 +98,15 @@ public class LoadingActivity extends Activity {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo!=null && networkInfo.isConnected()){
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 
 }

@@ -18,16 +18,14 @@ import perchello.hangman.UI.HighscoreActivity;
  * Created by Perchello on 22/03/2015.
  */
 public class HighscoreAdapter extends RecyclerView.Adapter<HighscoreAdapter.HighscoreViewHolder> {
-      private Highscore mHighscore;
       private Context mContext;
       private String[] mName;
-      private String[] mScore;
+      private int [] mScore;
 
-    public HighscoreAdapter (Context context, Highscore highscore){
+    public HighscoreAdapter (Context context, String [] usernames, int [] scores){
         mContext = context;
-        mHighscore= highscore;
-        mName = mHighscore.getNames();
-        mScore = mHighscore.getScores();
+        mName = usernames;
+        mScore = scores;
 
     }
 
@@ -41,7 +39,7 @@ public class HighscoreAdapter extends RecyclerView.Adapter<HighscoreAdapter.High
 
     @Override
     public void onBindViewHolder(HighscoreViewHolder holder, int position) {
-            holder.bindHighscore((position + 1) + "", mName[position], mScore[position]);
+            holder.bindHighscore((position + 1) + "", mName[position]+" ", mScore[position]+" ");
 
     }
 

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -212,7 +214,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         }
         if (mHangmanGameLogic.compareAnswerProg()) {
             String result = ("Good work " + mUsername + " you solved it! The answer was : \n \n " + mHangmanGameLogic.getGameName());
-            mUserInfo.addScoreSingleGame(mHangmanGameLogic.getHits().length());
+            mUserInfo.addScoreSingleGame(mHangmanGameLogic.getHits().length(), isNetworkAvailable());
             Intent intent = new Intent(this, ResultActivity.class);
             intent.putExtra("result", result);
             intent.putExtra("username", mUsername);
@@ -247,5 +249,13 @@ public class GameActivity extends Activity implements View.OnClickListener {
             mHeroImageView.setImageDrawable(getResources().getDrawable(pictureId));
         }*/
     }
-
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo!=null && networkInfo.isConnected()){
+            isAvailable = true;
+        }
+        return isAvailable;
+    }
 }

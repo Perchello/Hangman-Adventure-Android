@@ -2,7 +2,10 @@ package perchello.hangman.UI;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -54,6 +57,22 @@ public class SignUpActivity extends Activity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+                else if(username.length()<4) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                    builder.setMessage("Username should be 4-15 characters long")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
+                else if(!isNetworkAvailable()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+                    builder.setMessage("Please make sure you have internet connection")
+                            .setTitle("Oops!")
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
                 else {
                     // create the new user!
 
@@ -85,6 +104,16 @@ public class SignUpActivity extends Activity {
                 }
             }
         });
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo!=null && networkInfo.isConnected()){
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 
 

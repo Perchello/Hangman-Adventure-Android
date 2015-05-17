@@ -1,8 +1,14 @@
 package perchello.hangman.Model;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.parse.GetCallback;
+import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 import perchello.hangman.ParseConstants;
@@ -19,7 +25,7 @@ public class UserInfo {
     public UserInfo() {
         mCurrentUser = ParseUser.getCurrentUser();
         mName = mCurrentUser.getUsername();
-        mScore = (int) mCurrentUser.get("score");
+        mScore = (int) mCurrentUser.get(ParseConstants.KEY_SCORE);
         setAdvProgress();
     }
 
@@ -37,10 +43,13 @@ public class UserInfo {
 
     }
 
-    public void addScoreSingleGame(int score) {
+    public void addScoreSingleGame(int score, boolean isNetworkAvailable) {
         mScore += score;
         mCurrentUser.put(ParseConstants.KEY_SCORE, mScore);
-        mCurrentUser.saveInBackground();
+
+        if (isNetworkAvailable) {
+            mCurrentUser.saveInBackground();
+        }
     }
 
 
@@ -54,15 +63,32 @@ public class UserInfo {
         return mAdvDone[advNumber-1];
     }
 
-    public void setAdvScore (String advDone, int advNumber, int hits) {
-        mAdvDone [advNumber-1] += " " + advDone;
-        mAdvProgress[advNumber-1]++;
-        mScore+= hits;
-        mCurrentUser.put (ParseConstants.KEY_ADVWORDSDONE+advNumber, mAdvDone[advNumber-1]);
-        mCurrentUser.put(ParseConstants.KEY_ADVPROGRESS+advNumber, mAdvProgress[advNumber-1]);
-        mCurrentUser.put (ParseConstants.KEY_SCORE, mScore);
+    public void setAdvScoreOnline(String advDone, int advNumber, int hits) {
+        mAdvDone[advNumber - 1] += " " + advDone;
+        mAdvProgress[advNumber - 1]++;
+        mScore += hits;
+        mCurrentUser.put(ParseConstants.KEY_ADVWORDSDONE + advNumber, mAdvDone[advNumber - 1]);
+        mCurrentUser.put(ParseConstants.KEY_ADVPROGRESS + advNumber, mAdvProgress[advNumber - 1]);
+        mCurrentUser.put(ParseConstants.KEY_SCORE, mScore);
         mCurrentUser.saveInBackground();
     }
+
+    public void setAdvScoreOffline (String advDone, int advNumber, int hits) {
+        mAdvDone[advNumber - 1] += " " + advDone;
+        mAdvProgress[advNumber - 1]++;
+
+        if (!(boolean) mCurrentUser.get(ParseConstants.KEY_OFFLINE)) {
+            mScore = hits;
+            mCurrentUser.put(ParseConstants.KEY_OFFLINE, true);
+
+        } else {
+            mScore +=hits;
+        }
+        mCurrentUser.put(ParseConstants.KEY_ADVWORDSDONE + advNumber, mAdvDone[advNumber - 1]);
+        mCurrentUser.put(ParseConstants.KEY_ADVPROGRESS + advNumber, mAdvProgress[advNumber - 1]);
+        mCurrentUser.put(ParseConstants.KEY_SCORE, mScore);
+    }
+
 
     public String getName() {
         return mName;
@@ -70,5 +96,6 @@ public class UserInfo {
     public int getScore(){
         return mScore;
     }
+
 
 }

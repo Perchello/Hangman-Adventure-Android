@@ -9,4 +9,6 @@ public final class ParseConstants {
     public final static String KEY_SCORE = "score";
     public final static String KEY_ADVPROGRESS = "advprogress";
     public final static String KEY_ADVWORDSDONE = "advwordsdone";
+    public final static String KEY_OFFLINE = "playedOffline";
+
 }

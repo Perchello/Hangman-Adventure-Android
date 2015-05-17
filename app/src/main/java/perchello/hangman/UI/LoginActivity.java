@@ -2,11 +2,11 @@ package perchello.hangman.UI;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +17,6 @@ import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
-import perchello.hangman.ForgotPassword;
 import perchello.hangman.R;
 
 
@@ -76,6 +75,14 @@ public class LoginActivity extends Activity {
                     AlertDialog dialog = builder.create();
                     dialog.show();
                 }
+                else if (!isNetworkAvailable()){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                    builder.setMessage("Please make sure you have internet connection")
+                            .setTitle("Oops")
+                            .setPositiveButton(android.R.string.ok, null);
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
                 else {
                     // Login
                     mProgressBar.setVisibility(View.VISIBLE);
@@ -106,6 +113,15 @@ public class LoginActivity extends Activity {
                 }
             }
         });
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = manager.getActiveNetworkInfo();
+        boolean isAvailable = false;
+        if (networkInfo!=null && networkInfo.isConnected()){
+            isAvailable = true;
+        }
+        return isAvailable;
     }
 
 
